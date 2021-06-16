@@ -16,7 +16,10 @@ class CKEditor extends Field
 
     public function render()
     {
-        $this->script = "$('textarea.{$this->getElementClassString()}').ckeditor();";
+        $this->script = "$('textarea.{$this->getElementClassString()}').ckeditor({
+            height: 500,
+            filebrowserImageUploadUrl: '/admin/file-upload'
+        });";
 
         return parent::render();
     }

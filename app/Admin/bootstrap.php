@@ -24,4 +24,4 @@ use Encore\FileBrowser\FileBrowserField;
 
 Encore\Admin\Form::forget(['map', 'editor']);
 Encore\Admin\Form::extend('media', FileBrowserField::class);
-//Form::extend('ckeditor', CKEditor::class);
+Form::extend('ckeditor', CKEditor::class);

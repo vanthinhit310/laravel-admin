@@ -16106,6 +16106,77 @@
      
 }
 
+    namespace Spatie\LaravelImageOptimizer\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class ImageOptimizer {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getOptimizers()
+        {
+                        /** @var \Spatie\ImageOptimizer\OptimizerChain $instance */
+                        return $instance->getOptimizers();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function addOptimizer($optimizer)
+        {
+                        /** @var \Spatie\ImageOptimizer\OptimizerChain $instance */
+                        return $instance->addOptimizer($optimizer);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setOptimizers($optimizers)
+        {
+                        /** @var \Spatie\ImageOptimizer\OptimizerChain $instance */
+                        return $instance->setOptimizers($optimizers);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setTimeout($timeoutInSeconds)
+        {
+                        /** @var \Spatie\ImageOptimizer\OptimizerChain $instance */
+                        return $instance->setTimeout($timeoutInSeconds);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function useLogger($log)
+        {
+                        /** @var \Spatie\ImageOptimizer\OptimizerChain $instance */
+                        return $instance->useLogger($log);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function optimize($pathToImage, $pathToOutput = null)
+        {
+                        /** @var \Spatie\ImageOptimizer\OptimizerChain $instance */
+                        return $instance->optimize($pathToImage, $pathToOutput);
+        }
+         
+    }
+     
+}
+
     namespace Illuminate\Http { 
             /**
      * 
@@ -19460,6 +19531,7 @@ namespace  {
             class Image extends \Intervention\Image\Facades\Image {}
             class Admin extends \Encore\Admin\Facades\Admin {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
+            class ImageOptimizer extends \Spatie\LaravelImageOptimizer\Facades\ImageOptimizer {}
      
 }
 

@@ -415,14 +415,14 @@ return [
             'enable' => true,
         ],
 
-        'ckeditor' => [
+        /*'ckeditor' => [
             'enable' => true,
             'config' => [
                 'lang' => 'en',
                 'height' => 500,
                 'filebrowserImageUploadUrl' => '/admin/file-upload',
             ]
-        ],
+        ],*/
         'daterangepicker' => [
             'enable' => true,
             'config' => []
