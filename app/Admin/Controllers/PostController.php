@@ -3,10 +3,12 @@
 namespace App\Admin\Controllers;
 
 use App\Entities\Post;
+use Carbon\Carbon;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Str;
 
 class PostController extends AdminController
 {
@@ -27,13 +29,30 @@ class PostController extends AdminController
         $grid = new Grid(new Post());
 
         $grid->column('id', __('Id'));
-        $grid->column('title', __('Title'));
-        $grid->column('image', __('Image'));
-        $grid->column('content', __('Content'));
-        $grid->column('user_id', __('User id'));
-        $grid->column('status', __('Status'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('title', __('Title'))->limit(50);
+        $grid->column('image', __('Image'))->image('', 50, 50);;
+        $grid->column('content', __('Content'))->display(function ($content) {
+            return strip_tags(Str::words($content, 20));
+        });
+        $grid->column('user.name', __('Author'));
+        $grid->column('status', __('Status'))->label([
+            'draft' => 'danger',
+            'pending' => 'warning',
+            'published' => 'success'
+        ]);
+        $grid->column('created_at', __('Created at'))->display(function ($created_at) {
+            return Carbon::parse($created_at)->format('d/m/Y');
+        });
+
+        //config filter
+        $grid->filter(function ($filter) {
+
+            // Remove the default id filter
+            $filter->disableIdFilter();
+
+            $filter->contains('title', __('Title'));
+            $filter->between('created_at', __('Created At'))->datetime();
+        });
 
         return $grid;
     }
@@ -42,6 +61,7 @@ class PostController extends AdminController
      * Make a show builder.
      *
      * @param mixed $id
+     *
      * @return Show
      */
     protected function detail($id): Show
