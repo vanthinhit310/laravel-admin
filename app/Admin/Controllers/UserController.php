@@ -6,6 +6,7 @@ use App\Models\User;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
+use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
 class UserController extends AdminController
@@ -40,6 +41,7 @@ class UserController extends AdminController
      * Make a show builder.
      *
      * @param mixed $id
+     *
      * @return Show
      */
     protected function detail($id): Show
@@ -72,5 +74,32 @@ class UserController extends AdminController
         $form->text('remember_token', __('Remember token'));
 
         return $form;
+    }
+
+    public function demo(Content $content)
+    {
+        // optional
+        $content->header('page header');
+
+        // optional
+        $content->description('page description');
+
+        // add breadcrumb since v1.5.7
+        $content->breadcrumb(
+            ['text' => 'Dashboard', 'url' => '/admin'],
+            ['text' => 'Demo page']
+        );
+
+        $content->body('hello world');
+
+        // Add another contents into body
+        $content->body('foo bar');
+
+        // method `row` is alias for `body`
+        $content->row('hello world');
+
+//        return $content->render();
+
+        return $content->view('admin.pages.demo', ['title' => 'This is demo page']);
     }
 }
