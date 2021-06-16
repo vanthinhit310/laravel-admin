@@ -36,18 +36,24 @@ class PostController extends AdminController
             return strip_tags(Str::words($content, 20));
         });
         $grid->column('user.name', __('Author'));
-        $grid->column('status', __('Status'))->label([
-            'draft' => 'danger',
-            'pending' => 'warning',
-            'published' => 'success'
-        ]);
+        $grid->column('status', __('Status'))
+            ->filter([
+                'draft' => 'Draft',
+                'pending' => 'Pending',
+                'published' => 'Published'
+            ])
+            ->label([
+                'draft' => 'danger',
+                'pending' => 'warning',
+                'published' => 'success'
+            ]);
+
         $grid->column('created_at', __('Created at'))->display(function ($created_at) {
             return Carbon::parse($created_at)->format('d/m/Y');
         });
 
         //config filter
         $grid->filter(function ($filter) {
-            // Remove the default id filter
             $filter->disableIdFilter();
             $filter->contains('title', __('Title'));
             $filter->contains('content', __('Content'));
@@ -57,7 +63,7 @@ class PostController extends AdminController
                 });
 
             }, 'Author');
-            $filter->equal('status', __('Status'))->select(['published' => 'Published', 'pending' => 'Pending', 'draft' => 'Draft']);
+            $filter->in('status', __('Status'))->multipleSelect(['published' => 'Published', 'pending' => 'Pending', 'draft' => 'Draft']);
             $filter->between('created_at', __('Created At'))->datetime();
         });
 
