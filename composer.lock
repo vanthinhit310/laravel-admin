@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d697e4a77d706d19025cdbcc3527972",
+    "content-hash": "4c19afe8627a73736ccac6fc8159cdcb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -896,6 +896,64 @@
                 "source": "https://github.com/fideloper/TrustedProxy/tree/4.4.1"
             },
             "time": "2020-10-22T13:48:01+00:00"
+        },
+        {
+            "name": "fourn/admin-config",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-admin-extensions/admin-config.git",
+                "reference": "bf8beae7c0231758988fe12e18ba7a002bb18f74"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-admin-extensions/admin-config/zipball/bf8beae7c0231758988fe12e18ba7a002bb18f74",
+                "reference": "bf8beae7c0231758988fe12e18ba7a002bb18f74",
+                "shasum": ""
+            },
+            "require": {
+                "encore/laravel-admin": "~1.6",
+                "laravel-admin-ext/config": "^1.0",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Fourn\\AdminConfig\\AdminConfigServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fourn\\AdminConfig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "fourn",
+                    "email": "fourn@foxmail.com"
+                }
+            ],
+            "description": "Manage your database configuration as profiles",
+            "homepage": "https://github.com/fourn/admin-config",
+            "keywords": [
+                "config",
+                "extension",
+                "laravel-admin"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-admin-extensions/admin-config/issues",
+                "source": "https://github.com/laravel-admin-extensions/admin-config/tree/1.0.4"
+            },
+            "time": "2019-03-20T04:00:15+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",

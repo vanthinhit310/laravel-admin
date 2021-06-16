@@ -431,5 +431,10 @@ return [
         'grid-lightbox' => [
             'enable' => true,
         ],
+        'admin-config' => [
+            'title' => 'Theme Options',
+            'description' => 'Manage your profiles as profiles',
+            'action' => ' ',
+        ],
     ],
 ];
