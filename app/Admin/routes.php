@@ -15,4 +15,7 @@ Route::group([
     $router->resource('users', UserController::class);
     $router->get('users/demo/page', 'UserController@demo');
     $router->resource('posts', PostController::class);
+
+    //Fileupload
+    $router->post('/file-upload', 'FileuploadController@index');
 });

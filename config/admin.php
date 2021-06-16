@@ -420,6 +420,7 @@ return [
             'config' => [
                 'lang' => 'en',
                 'height' => 500,
+                'filebrowserImageUploadUrl' => '/admin/file-upload',
             ]
         ],
         'daterangepicker' => [

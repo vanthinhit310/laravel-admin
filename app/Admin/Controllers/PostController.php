@@ -76,6 +76,7 @@ class PostController extends AdminController
     protected function detail($id): Show
     {
         $show = new Show(Post::findOrFail($id));
+        $show->divider();
         $show->user('Author information', function ($user) {
             $user->setResource('/admin/users');
             $user->id();

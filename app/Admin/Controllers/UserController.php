@@ -97,9 +97,10 @@ class UserController extends AdminController
 
         // method `row` is alias for `body`
         $content->row('hello world');
+        $content->body(view('admin.pages.demo', ['title' => 'This is demo page'])->render());
 
-//        return $content->render();
+        return $content->render();
 
-        return $content->view('admin.pages.demo', ['title' => 'This is demo page']);
+//        return $content->view('admin.pages.demo', ['title' => 'This is demo page']);
     }
 }

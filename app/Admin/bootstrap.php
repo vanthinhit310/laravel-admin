@@ -20,7 +20,8 @@
 
 use Encore\Admin\Form;
 use App\Admin\Extensions\Form\CKEditor;
+use Encore\FileBrowser\FileBrowserField;
 
 Encore\Admin\Form::forget(['map', 'editor']);
-Encore\Admin\Form::extend('media', \Encore\FileBrowser\FileBrowserField::class);
-Form::extend('ckeditor', CKEditor::class);
+Encore\Admin\Form::extend('media', FileBrowserField::class);
+//Form::extend('ckeditor', CKEditor::class);
