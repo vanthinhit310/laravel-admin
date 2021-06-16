@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Entities\Post;
+use App\Models\User;
 use Carbon\Carbon;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -75,13 +76,17 @@ class PostController extends AdminController
     protected function detail($id): Show
     {
         $show = new Show(Post::findOrFail($id));
-
+        $show->user('Author information', function ($user) {
+            $user->setResource('/admin/users');
+            $user->id();
+            $user->name();
+            $user->email();
+        });
         $show->field('id', __('Id'));
         $show->field('title', __('Title'));
-        $show->field('image', __('Image'));
+        $show->field('image', __('Image'))->image();
         $show->field('content', __('Content'));
-        $show->field('user_id', __('User id'));
-        $show->field('status', __('Status'));
+        $show->field('status', __('Status'))->badge();
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -97,11 +102,17 @@ class PostController extends AdminController
     {
         $form = new Form(new Post());
 
-        $form->text('title', __('Title'));
-        $form->image('image', __('Image'));
-        $form->textarea('content', __('Content'));
-        $form->number('user_id', __('User id'));
-        $form->text('status', __('Status'))->default('published');
+        $form->text('title', __('Title'))->rules('required|min:3');
+        $form->image('image', __('Image'))->thumbnail([
+            'small' => [50, 50],
+        ]);
+        $form->ckeditor('content', __('Content'))->rules('required|min:3');
+        $form->select('user_id', __('Author'))->options(User::all()->pluck('name', 'id'))->rules('required');
+        $form->select('status', __('Status'))->options([
+            'published' => 'Published',
+            'pending' => 'Pending',
+            'draft' => 'Draft'
+        ])->default('published')->rules('required');;
 
         return $form;
     }
