@@ -1,0 +1,18 @@
+{
+    "ID": "ID",
+    "Created at": "Created at",
+    "Updated at": "Updated at",
+    "Created At": "Created At",
+    "Updated At": "Updated At",
+    "Id": "Id",
+    "Title": "Title",
+    "Image": "Image",
+    "Content": "Content",
+    "Author": "Author",
+    "Status": "Status",
+    "Name": "Name",
+    "Email": "Email",
+    "Email verified at": "Email verified at",
+    "Password": "Password",
+    "Remember token": "Remember token"
+}
