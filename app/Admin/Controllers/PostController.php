@@ -46,13 +46,21 @@ class PostController extends AdminController
 
         //config filter
         $grid->filter(function ($filter) {
-
             // Remove the default id filter
             $filter->disableIdFilter();
-
             $filter->contains('title', __('Title'));
+            $filter->contains('content', __('Content'));
+            $filter->where(function ($query) {
+                $query->whereHas('user', function ($query) {
+                    $query->where('name', 'like', "%{$this->input}%");
+                });
+
+            }, 'Author');
+            $filter->equal('status', __('Status'))->select(['published' => 'Published', 'pending' => 'Pending', 'draft' => 'Draft']);
             $filter->between('created_at', __('Created At'))->datetime();
         });
+
+        $grid->quickSearch('title', 'content');
 
         return $grid;
     }
