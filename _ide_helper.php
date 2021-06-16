@@ -15342,6 +15342,32 @@
      *
      */ 
         class Str {
+                    /**
+         * 
+         *
+         * @see \Tanmuhittin\LaravelGoogleTranslate\LaravelGoogleTranslateServiceProvider::register()
+         * @param string $text
+         * @param string $locale
+         * @param string|null $base_locale
+         * @static 
+         */ 
+        public static function apiTranslate($text, $locale, $base_locale = null)
+        {
+                        return \Illuminate\Support\Str::apiTranslate($text, $locale, $base_locale);
+        }
+                    /**
+         * 
+         *
+         * @see \Tanmuhittin\LaravelGoogleTranslate\LaravelGoogleTranslateServiceProvider::register()
+         * @param string $text
+         * @param string $locale
+         * @param string|null $base_locale
+         * @static 
+         */ 
+        public static function apiTranslateWithAttributes($text, $locale, $base_locale = null)
+        {
+                        return \Illuminate\Support\Str::apiTranslateWithAttributes($text, $locale, $base_locale);
+        }
          
     }
      

@@ -18,4 +18,7 @@ Route::group([
 
     //Fileupload
     $router->post('/file-upload', 'FileuploadController@index')->middleware('optimizeImages');
+
+    // translation manager
+    $router->get('translations', 'TranslationController@index');
 });
